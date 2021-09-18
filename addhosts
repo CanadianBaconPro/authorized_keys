@@ -1,0 +1,32 @@
+#!/bin/bash
+# Made by Bacon
+# The weird indenting is b/c echo will carry through ln spacing 
+
+if (( $EUID == 0))
+	then
+		echo "
+### Hosts added by Bacon using ./addhosts
+
+## Single IP range for small servers
+192.168.1.94	halfdead
+192.168.1.95	whonnak
+
+## Block IP range for larger servers
+
+# 100 -> 95 reserved for bigboy
+192.168.1.100	bigboy
+
+# 105 -> 100 reserved for littleboy -> kerbuster
+192.168.1.105	kerbuster
+
+# 110 -> 105 reserved for offloader
+192.168.1.110	offloader
+
+# 115 -> 110 reserved for crymia
+192.168.1.115	crymia
+		" >> /etc/hosts
+
+	else 
+		echo "Please run script as root"
+fi
+
